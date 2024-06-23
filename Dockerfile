@@ -1,6 +1,4 @@
 FROM debian:latest as setup
-# If docker X509 cert timeout then copy https://raw.githubusercontent.com/bagder/ca-bundle/master/ca-bundle.crt
-# To /etc/pki/tls/certs/
 
 ENV IBC_VERSION=3.19.0
 
@@ -12,6 +10,10 @@ ENV CHANNEL=stable
 # ExecStart=
 # ExecStart=/usr/bin/dockerd --default-ulimit nofile=65536:65536 -H fd://
 # to /etc/systemd/system/docker.service.d/override.conf then system restart docker to avoid memory limit
+
+RUN apt-get update && apt-get install -y python3 python3-pip python3-numpy python3-pandas python3-matplotlib
+
+RUN pip3 install ib_insync --break-system-packages
 
 RUN apt update && \
     apt install --no-install-recommends -y \
