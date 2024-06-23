@@ -1,4 +1,6 @@
 FROM debian:latest as setup
+# If docker X509 cert timeout then copy https://raw.githubusercontent.com/bagder/ca-bundle/master/ca-bundle.crt
+# To /etc/pki/tls/certs/
 
 ENV IBC_VERSION=3.19.0
 
