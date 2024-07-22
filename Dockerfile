@@ -13,7 +13,7 @@ ENV CHANNEL=stable
 
 RUN apt-get update && apt-get install -y python3 python3-pip python3-numpy python3-pandas python3-matplotlib
 
-RUN pip3 install ib_insync pyarrow fastparquet --break-system-packages
+RUN pip3 install ib_async pyarrow fastparquet --break-system-packages
 
 RUN apt update && \
     apt install --no-install-recommends -y \
